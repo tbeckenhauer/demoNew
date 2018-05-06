@@ -4,6 +4,7 @@ const useref = require('gulp-useref');
 const lazypipe = require('lazypipe');
 const rev = require('gulp-rev');
 const revReplace = require('gulp-rev-replace');
+const replace = require('gulp-replace');
 const uglify = require('gulp-uglify');
 const cssnano = require('gulp-cssnano');
 const htmlmin = require('gulp-htmlmin');
@@ -36,5 +37,6 @@ function build() {
     .pipe(htmlFilter)
     .pipe(htmlmin())
     .pipe(htmlFilter.restore)
+    .pipe(replace('<base href="/">', '<base href="/newDemp/">'))
     .pipe(gulp.dest(conf.path.dist()));
 }
